@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,300,700' rel='stylesheet' type='text/css'>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    {% block header_section %}{% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+    <style type="text/css">
+	    body {
+	      padding-top: 20px;
+	      padding-bottom: 40px;
+	      text-align:justify;
+	      text-justify:inter-word;
+	      font-family: 'Open Sans', serif; 
+	    }
+
+	    /* Custom container */
+	    .container-narrow {
+	      margin: 0 auto;
+	      max-width: 700px;
+	    }
+
+	    .container-narrow > hr {
+	      margin: 30px 0;
+	    }
+
+	     /* Main marketing message and sign up button */
+	    .jumbotron {
+	      margin: 60px 0;
+	      text-align: center;
+	    }
+
+	    .jumbotron h1 {
+	      font-size: 72px;
+	      line-height: 1;
+	    }
+
+	   .jumbotron .btn {
+	      font-size: 21px;
+	      padding: 14px 24px;
+	    }
+
+	    /* Supporting marketing content */
+	    .marketing {
+	      margin: 60px 0;
+	    }
+
+	    .marketing p + h4 {
+	      margin-top: 28px;
+	    }
+
+	    h3 {
+	      color: rgb(0, 69, 133);
+	      margin: 0em 0 0;
+	    }
+
+	    h4 {
+	      color: rgb(0, 69, 133);
+	      margin: 3em 0px 1em;
+	      text-transform:uppercase;
+	    }
+
+	    h5 {
+	      margin: 2em 0 0;
+	    }
+
+	    .first_content {
+	      margin: 0 0;
+	    }
+
+	    img {
+	      padding: 2px;
+	      border: 1px solid
+	    }
+
+	    {% if pagesize %}
+	    @page {
+		size: {{ pagesize }};
+		margin: 1cm;
+		@frame footer {
+		    -pdf-frame-content: footerContent;
+		    bottom: 0cm;
+		    margin-left: 9cm;
+		    margin-right: 9cm;
+		    height: 1cm;
+		}
+	    }
+	    {% endif %}
+    </style>
+</head>
+
+<body>
+    {% autoescape on %}
+    <div class="container-narrow">
+        {% block content %}{% endblock %}
+    </div>
+    {% endautoescape %}
+</body>
+</html>

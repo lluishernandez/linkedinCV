@@ -1,0 +1,5 @@
+vsys/
+# Files
+*.sql
+*.pyc
+*.log
