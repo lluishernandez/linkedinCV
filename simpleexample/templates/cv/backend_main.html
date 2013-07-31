@@ -37,6 +37,9 @@
 					<a class="icon-user" href="#basic_configuration_description" data-toggle="tab"> Basic Configuration</a>
 					</li>
 					<li>
+					<a class="icon-info" href="#credits_description" data-toggle="tab"> Credits</a>
+					</li>
+					<li>
 					<a class="icon-signout" href="#signout_description" data-toggle="tab"> Sign out</a>
 					</li>
 				</ul>
@@ -70,9 +73,17 @@
 	Section where the user will be able to change the access password.
 						</p>
 						<div class="pull-right">
-						<a href="{% url 'backend_sections' %}" class="btn btn-primary">Change the password</a>
+						<a href="{% url 'backend_pass_change' %}" class="btn btn-primary">Change the password</a>
 						</div>
 					</div>
+					<div id="credits_description" class="tab-pane">
+						<p>
+	This web application was made using the python web framework Django. It also uses other libraries as "python-linkedin" and "django-widget-tweaks".</p>
+						<p>
+	The UI uses the Bootstrap CSS llibrary, JQuery and Font-awesome.
+						</p>
+					</div>
+
 					<div id="signout_description" class="tab-pane">
 						<p>
 	Just signout.
