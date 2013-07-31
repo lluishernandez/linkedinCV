@@ -13,5 +13,6 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^linkedin/', include('profile_interface_app.urls')),
+    url(r'^accounts/', include('login.urls')),
     url(r'^$', 'profile_interface_app.views.main', name='home'),
 )

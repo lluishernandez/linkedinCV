@@ -4,10 +4,10 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.shortcuts import render
 from django.views.decorators.cache import cache_page
+from django.contrib.auth.decorators import login_required
 
 from linkedin import linkedin
 
-from common.secure_vars import *
 from profile_interface_app.models import LinkedInSettings
 from profile_interface_app.forms import LinkedInSetupForm
 
@@ -80,12 +80,14 @@ def main(request):
     else:
         return HttpResponse("Error connecting LinkedIn.")
 
-
+@login_required
 def backend_main(request):
     to_return = {}
     return render(request, 'cv/backend_main.html', to_return)
 
 
+
+@login_required
 def backend_set_linkedin_information(request):
     if request.method == 'POST':
         form = LinkedInSetupForm(request.POST)
@@ -112,6 +114,7 @@ def backend_set_linkedin_information(request):
     return render(request, 'cv/backend_linkein_account.html', to_return)
 
 
+@login_required
 def backend_social_buttons(request):
     if request.method == 'POST':
             """TODO: Change to generate dynamic form based on the DB
@@ -142,6 +145,7 @@ def backend_social_buttons(request):
     return render(request, 'cv/backend_social_buttons.html', to_return)
 
 
+@login_required
 def backend_configure_sections(request):
     if request.method == 'POST':
         positions = request.POST.get('sections_order', None)

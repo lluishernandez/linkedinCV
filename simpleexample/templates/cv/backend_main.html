@@ -4,6 +4,14 @@
    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
    <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+   <style>
+   .tabs-left > .nav-tabs {
+        padding: 1em 0px 2em;
+   }
+   .tab-content {
+        padding: 1em 0px;
+   }
+   </style>
 {% endblock %}
 
 {% block content %}
@@ -24,6 +32,12 @@
 					</li>
 					<li>
 					<a class="icon-list-ol" href="#sections_setup_description" data-toggle="tab"> Sections Setup</a>
+					</li>
+					<li>
+					<a class="icon-user" href="#basic_configuration_description" data-toggle="tab"> Basic Configuration</a>
+					</li>
+					<li>
+					<a class="icon-signout" href="#signout_description" data-toggle="tab"> Sign out</a>
 					</li>
 				</ul>
 				<div class="tab-content">
@@ -51,6 +65,23 @@
 						<a href="{% url 'backend_sections' %}" class="btn btn-primary">Change the order of the sections</a>
 						</div>
 					</div>
+					<div id="basic_configuration_description" class="tab-pane">
+						<p>
+	Section where the user will be able to change the access password.
+						</p>
+						<div class="pull-right">
+						<a href="{% url 'backend_sections' %}" class="btn btn-primary">Change the password</a>
+						</div>
+					</div>
+					<div id="signout_description" class="tab-pane">
+						<p>
+	Just signout.
+						</p>
+						<div class="pull-right">
+						<a href="{% url 'logout' %}" class="btn btn-primary">Signout</a>
+						</div>
+					</div>
+
 				</div>
                                 <script>
 				$(document).ready(function () {
@@ -60,5 +91,4 @@
 			</div>
 		</div>
        </div>
-
 {% endblock %}
