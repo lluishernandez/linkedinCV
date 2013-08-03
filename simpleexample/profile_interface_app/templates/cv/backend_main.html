@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block header_section %}
+   <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+   <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
+   <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+   <style>
+   .tabs-left > .nav-tabs {
+        padding: 1em 0px 2em;
+   }
+   .tab-content {
+        padding: 1em 0px;
+   }
+   </style>
+{% endblock %}
+
+{% block content %}
+       <div class="row-fluid">
+		<div class="span12">
+			<h2>Backend</h2>
+		</div>
+       </div>
+       <div class="row-fluid">
+		<div class="span12">
+			<div class="tabbable tabs-left">
+				<ul class="nav nav-tabs" id="backend_menu">
+					<li>
+					<a class="icon-linkedin-sign" href="#linkedin_description" data-toggle="tab"> LinkedIn Account</a>
+					</li>
+					<li>
+					<a class="icon-bullhorn" href="#social_buttons_section_description" data-toggle="tab"> Social Buttons</a>
+					</li>
+					<li>
+					<a class="icon-list-ol" href="#sections_setup_description" data-toggle="tab"> Sections Setup</a>
+					</li>
+					<li>
+					<a class="icon-user" href="#basic_configuration_description" data-toggle="tab"> Basic Configuration</a>
+					</li>
+					<li>
+					<a class="icon-info" href="#credits_description" data-toggle="tab"> Credits</a>
+					</li>
+					<li>
+					<a class="icon-signout" href="#signout_description" data-toggle="tab"> Sign out</a>
+					</li>
+				</ul>
+				<div class="tab-content">
+					<div id="linkedin_description" class="tab-pane">
+						<p>
+	In order to get this web application working properly, the user has to get registered into the web for LinkedIn developers and set the variables (user token, user secret, API key and API secret). Once these information will get set, the web interface will start to be showed.
+						</p>
+						<div class="pull-right">
+						<a href="{% url 'backend_linkedin' %}" class="btn btn-primary">Set LinkedIn parameters</a>
+						</div>
+					</div>
+					<div id="social_buttons_section_description" class="tab-pane">
+						<p>
+	This application lets the user to activate different social buttons, this buttons are simple links to the user profiles of different services.To activate one of them just has to be specified the URL of the profile, and remove to disable it.
+						</p>
+						<div class="pull-right">
+						<a href="{% url 'backend_social_buttons' %}" class="btn btn-primary">Enable/Disable Social Buttons</a>
+						</div>
+					</div>
+					<div id="sections_setup_description" class="tab-pane">
+						<p>
+	To customize the resume interface, this section lets change the order of different parts of the resume. The user could set any order except the title and the social buttons.
+						</p>
+						<div class="pull-right">
+						<a href="{% url 'backend_sections' %}" class="btn btn-primary">Change the order of the sections</a>
+						</div>
+					</div>
+					<div id="basic_configuration_description" class="tab-pane">
+						<p>
+	Section where the user will be able to change the access password.
+						</p>
+						<div class="pull-right">
+						<a href="{% url 'backend_pass_change' %}" class="btn btn-primary">Change the password</a>
+						</div>
+					</div>
+					<div id="credits_description" class="tab-pane">
+						<p>
+	This web application was made using the python web framework Django. It also uses other libraries as "python-linkedin" and "django-widget-tweaks".</p>
+						<p>
+	The UI uses the Bootstrap CSS llibrary, JQuery and Font-awesome.
+						</p>
+					</div>
+
+					<div id="signout_description" class="tab-pane">
+						<p>
+	Just signout.
+						</p>
+						<div class="pull-right">
+						<a href="{% url 'logout' %}" class="btn btn-primary">Signout</a>
+						</div>
+					</div>
+
+				</div>
+                                <script>
+				$(document).ready(function () {
+					$('#backend_menu a:first').tab('show');
+				});
+                                </script>
+			</div>
+		</div>
+       </div>
+{% endblock %}

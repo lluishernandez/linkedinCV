@@ -1,0 +1,21 @@
+{% load profile_interface_filters %}
+
+{% if skills %}                  <!-- Skills Section -->
+<div class="row-fluid">          
+	<div class="span12">      
+		<h4>Skills</h4>
+	</div>
+	<div class="span12">
+		<dl class="dl-horizontal">
+			<dt>IT:</dt>
+			<dd>{{skills|skills_to_list_comma}}</dd>
+			<dt>Languages:</dt>
+			<dd>
+			{% for language in languages.values %}
+				{{language.language.name}} <small>{{language.proficiency.name}}</small><br/>
+			{% endfor %}
+			</dd>
+		</dl>
+	</div>
+</div> 
+{% endif %}                      <!-- End skills section -->

@@ -1,0 +1,20 @@
+{% load profile_interface_filters %}
+
+{% if positions %}               <!--Positions Section -->
+<div class="row-fluid">          
+	<div class="span12">
+		<h4>WORK EXPERIENCE</h4>
+	</div>
+	{% for position in positions %}
+	<div class="span12">
+		<h5 {% if forloop.first %}class="first_content"{% endif %}>{{position.title}} <small>({{position.startDate.month|month_name}}/{{position.startDate.year}} - {{position.endDate.month|month_name}}/{{position.endDate.year}})</small></h5>
+		{% ifnotequal position.company.name|stringformat:"s" 'Me' %}               
+		{{position.company.name}}</br>
+		{% endifnotequal %}
+		<div class="offset1">
+		{{position.summary|linebreaksbr}}
+	     	</div>
+	</div> 
+	{% endfor %}
+</div> 
+{% endif %}

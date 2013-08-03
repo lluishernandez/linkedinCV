@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load profile_interface_filters %}
+
+{% block content %}
+       <div class="row-fluid">
+              <div class="span9">
+                <h3>{{full_name}} Resume</h3>
+              </div>
+              <div class="span3">
+		{% include "cv/components/social_section.html"%}
+              </div>
+       </div>
+       {% for section in sections_to_show %}
+          {% include section.section_component_template %}
+       {% endfor %}
+
+{% endblock %}

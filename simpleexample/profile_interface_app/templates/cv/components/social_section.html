@@ -1,0 +1,7 @@
+<div>
+	{% for social_button in social_buttons %}
+		{% if social_button.social_url %}
+        	<a class="{{social_button.social_icon}} icon-2x{% if icons_bordered %} icon-border{% endif %}" href="{{social_button.social_url}}" alt="{{full_name}}'s {{social_button.social_name}} profile"></a>
+                {% endif %}
+        {% endfor %}
+</div>

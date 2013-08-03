@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load profile_interface_filters %}
+{% load widget_tweaks %}
+
+{% block header_section %}
+    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>  
+    <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
+    <style type="text/css">
+    .section_element {
+       padding: 0.5em 0;
+       margin: 0.1em 0;
+       background: rgb(0, 69, 133);
+       list-style-type: none;
+    }
+    .list_sections {
+       color: white;
+    }
+    .icon-resize-vertical {
+       padding: 0 1em;
+    }
+    </style>
+{% endblock %}
+
+{% block content %}
+       <div class="row-fluid">
+              <div class="span9">
+                <h3>Sections configuration</h3>
+              </div>
+       </div>
+       <div class="row-fluid">
+            <p>
+            Drag-and-drop the sections block and put them in the order you like. Once you have it just save the changes.
+            </p>
+       </div>
+       <div class="row-fluid">
+              <div class="span12">
+                      <form action="#" method="POST">
+                      {% csrf_token %}
+                      <ul id="sortable" class="list_sections">
+                      {% for section in sections_setup %}
+		          <li class="table-bordered section_element" id="{{section.id}}">
+                              <i class="icon-resize-vertical"></i>{{section.section_name|upper}}
+                          </li>
+                      {% endfor %}
+                      </ul>
+                      <input type="hidden" id="sections_order" name="sections_order" value=""></input>
+       	              <div class="row-fluid">
+                           <div class="span12">
+                                <div class="pull-right">
+                                      <a class="btn btn-danger" href="{% url 'backend_main' %}">Cancel</a>
+                                <input type="submit" class="btn btn-primary" value="Save changes"></input>
+                                </div>
+                           </div>
+                      </div>
+                      </form>
+
+              </div>
+       </div>
+       <script>  
+       
+       function makesortable() {  
+           $("#sortable").sortable({   
+               cursor: 'move',
+               update: function(event, ui) {
+                   var new_order = $("#sortable").sortable("toArray").toString();
+                   $('#sections_order').val(new_order);
+               }
+           });
+           $( "#sortable" ).disableSelection();
+       }
+       $(document).ready(makesortable);
+</script> 
+{% endblock %}

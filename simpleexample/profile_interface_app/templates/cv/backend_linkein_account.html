@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load profile_interface_filters %}
+{% load widget_tweaks %}
+
+{% block content %}
+       <div class="row-fluid">
+              <div class="span9">
+                <h3>LinkedIn interface setup</h3>
+              </div>
+       </div>
+       <div class="row-fluid">
+              <p>
+              This fields has to be filled with the parameters that cuold be gotten on the web page <a href="http://developer.linkedin.com">linkedin for developers</a>. The procedure is really simple, just sign in and get all the parameters showed bellow.</p>
+       </div>
+       <div class="row-fluid">
+              <div class="span12">
+                      <form action="#" method="POST">
+                      {% csrf_token %}
+                      {% for hidden_fields in formLinkedInSetup.hidden_fields %}
+                         {{hidden_fields}}
+                      {% endfor %}
+
+                      <dl class="dl-horizontal">
+                      {% for field in formLinkedInSetup.visible_fields %}
+                         {% if field.errors %}
+				<div class="text-error">
+                                <dt>{{ field.label_tag }}</dt>
+                                <dd> {{ field|add_class:"input-xlarge" }} {%for error in field.errors %} {{ error }} {% endfor %}</dd>
+                                </div>
+                         {% else %}
+                                <dt>{{ field.label }}</dt>
+                                <dd>{{field|add_class:"input-xlarge"}}</dd>
+                         {% endif %}
+                      {% endfor %}
+                      </dl>
+		      <br/>
+                      <div class="span9">
+			      <div class="pull-right">
+				      <a class="btn btn-danger" href="{% url 'backend_main' %}">Cancel</a>                      
+				      <input type="submit" class="btn btn-primary" value="Submit" />
+	                      </div>
+                      </div>
+                      </form>
+              </div>
+       </div>
+{% endblock %}

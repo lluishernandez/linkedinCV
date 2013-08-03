@@ -1,0 +1,12 @@
+{% if educations %}              <!-- Education section -->
+<div class="row-fluid">
+	<div class="span12">      
+		<h4>Education</h4>     
+	</div>
+	{% for education in educations %}
+	<div class="span12">
+		<p><strong>{{education.degree}}, {{education.fieldOfStudy}}</strong><small> ({{education.startDate.year}} - {{education.endDate.year}})</small>  {{education.schoolName}}</p>
+	</div>
+	{% endfor %}
+</div>        
+{% endif %}                      <!-- End education section -->

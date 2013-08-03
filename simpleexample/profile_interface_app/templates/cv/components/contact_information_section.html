@@ -1,0 +1,29 @@
+{% load profile_interface_filters %}
+<div class="row-fluid">
+	<div class="span9">
+		<h4>CONTACT INFORMATION</h4>
+	</div>
+	<div class="span9">
+		<dl class="dl-horizontal">
+			<dt>E-mail</dt>
+				{% if pagesize %}
+				<dd>{{email_address}}</dd>
+				{% else %}
+				<dd>{{email_address|protect_email}}</dd>
+				{% endif %}
+			<dt>Address</dt>
+			<dd>{{main_address}}</dd>
+			<dt>Phone Number</dt>
+			{% for phone in phone_numbers.values %}
+				{% if pagesize %}
+				<dd>{{phone.phoneNumber}}<x-small>{{phone.phonetType}}</x-small></dd>      
+				{% else %}
+				<dd>{{phone.phoneNumber|protect_telephonenumber}}<x-small>{{phone.phonetType}}</x-small></dd>
+				{% endif %}
+			{% endfor %}
+		</dl>
+	</div>
+	<div class="span2">
+	   <img src="{{personal_picture}}" alt="Lluis Hernandez Picture"> 
+	</div>
+</div>

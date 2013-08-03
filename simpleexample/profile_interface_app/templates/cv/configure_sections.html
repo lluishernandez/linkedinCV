@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load profile_interface_filters %}
+{% load widget_tweaks %}
+
+{% block content %}
+       <div class="row-fluid">
+              <div class="span9">
+                <h3>LinkedIn interface setup</h3>
+              </div>
+       </div>
+       <div class="row-fluid">
+              <div class="span12">
+                      <form action="#" method="POST">
+                      {% csrf_token %}
+                      {% for hidden_fields in formLinkedInSetup.hidden_fields %}
+                         {{hidden_fields}}
+                      {% endfor %}
+
+                      {% for field in formLinkedInSetup.visible_fields %}
+                         {% if field.errors %}
+				<div class="text-error">
+				{{ field.label_tag }} {% render_field field id="inputError" %} {%for error in field.errors %} {{ error }} {% endfor %}
+                                </div>
+                         {% else %}
+				{{ field.label_tag }} {{ field }}
+                         {% endif %}
+                      {% endfor %}
+		      <br/>
+                      <input type="submit" class="btn btn-primary" value="Submit" />
+                      </form>
+              </div>
+       </div>
+{% endblock %}
